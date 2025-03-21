@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Bucin All-in-One</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      background-color: rgba(255, 182, 193, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #ff6f91;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 15px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #ff4e80;
+    }
+
+    #error-message {
+      color: #fff0f0;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .home-page, .birthday-page, .next-page {
+      display: none;
+    }
+
+    .home-page.active, .birthday-page.active, .next-page.active {
+      display: block;
+    }
+
+    .login-page.hidden {
+      display: none;
+    }
+
+    .birthday-content, .final-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .birthday-text, .final-text {
+      flex: 1;
+      text-align: left;
+      color: #fff;
+    }
+
+    .birthday-photo, .final-photo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .birthday-photo img, .final-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container login-page" id="loginPage">
+    <h1>Hai Sayang 💖</h1>
+    <p>Ketik kata sandinya ya sayanggg</p>
+    <input type="password" id="passwordInput" placeholder="Kata sandi...">
+    <button onclick="checkPassword()">Masuk yaa cantikk</button>
+    <p id="error-message"></p>
+  </div>
+
+  <div class="container home-page" id="homePage">
+    <h1>Selamat Datang Sayang 💑</h1>
+    <p>Tebak hari ini hari apa?</p>
+    <p>Yap, hari ini ulang tahun kamu yang ke-18 tahun sayangg 🌸</p>
+    <button onclick="goToBirthday()">Next ➡️</button>
+  </div>
+
+  <div class="container birthday-page" id="birthdayPage">
+    <div class="birthday-content">
+      <div class="birthday-text">
+        <h1>Hallooo Sayanggg 💌</h1>
+        <p>Haii kenalinn anakk kecill ini namanyaa sefira rahmania, anak kecill ini sangat amat lucuu dan sampai sekarang tumbuh dewasa pun tetep lucuu, dari senyumnya pun udh terihat sangat cantikk saat kecill apalagi saat dewasa nyaa, anakk kecill ini sangat amatt lucuu dan hari inii anakk kecill ituu ber ulang tahun bertambah umurnyaa 💕✨</p>
+        <button onclick="goToNext()">Next ➡️</button>
+      </div>
+      <div class="birthday-photo">
+        <img src="C:\Users\Adit\Documents\document\WhatsApp Image 2025-03-21 at 20.47.22.jpeg" alt="Foto Ulang Tahun">
+      </div>
+    </div>
+  </div>
+
+  <div class="container next-page" id="nextPage">
+    <div class="final-content">
+      <div class="final-text">
+        <h1>Selamat Ulang Tahun Sayang 🎉</h1>
+        <p>Selamat ulang tahun cintaku! Semoga hari-harimu selalu dipenuhi dengan tawa, kebahagiaan, dan cinta. Terima kasih sudah menjadi bagian terindah dalam hidupku. Aku berdoa semoga kamu selalu sehat, dimudahkan semua urusan, dan makin bersinar setiap harinya. Aku selalu bangga dan sayangg samaa kamuu 💖</p>
+      </div>
+      <div class="final-photo">
+        <img src="C:\Users\Adit\Downloads\WhatsApp Image 2025-03-21 at 22.40.00.jpeg" alt="Foto Ulang Tahun">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value;
+      const correctPassword = "032207";
+      const errorMessage = document.getElementById('error-message');
+
+      if (password === correctPassword) {
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('homePage').classList.add('active');
+      } else {
+        errorMessage.textContent = "Ups! Itu bukan kata sandinya 😢";
+      }
+    }
+
+    function goToBirthday() {
+      document.getElementById('homePage').classList.remove('active');
+      document.getElementById('birthdayPage').classList.add('active');
+    }
+
+    function goToNext() {
+      document.getElementById('birthdayPage').classList.remove('active');
+      document.getElementById('nextPage').classList.add('active');
+    }
+  </script>
+</body>
+</html>
